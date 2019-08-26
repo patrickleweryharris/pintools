@@ -41,7 +41,7 @@ def get_github_stars(token):
     g = github.Github(token)
 
     g = g.get_user()
-    names = [item.full_name for item in g.get_starred()]
+    names = [(item.full_name, item.description) for item in g.get_starred()]
     return names
 
 
@@ -49,9 +49,10 @@ def main():
     parser = create_parser()
     args = parser.parse_args()
     stars = get_github_stars(args.github_token)
-    stars = [{'title': star,
+    stars = [{'title': star[0],
               'url': "{}/{}".format(GITHUB,
-                                    star),
+                                    star[0]),
+              'extended': star[1],
               'tags': ["github", "git_stars"]} for star in stars]
     utils.save_to_pinboard(args.pinboard_token, stars)
 

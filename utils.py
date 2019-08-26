@@ -8,7 +8,7 @@ def save_to_pinboard(api_token, links):
     Parameters:
     api_token: str
         Pinboard API token
-    links: [{title, url, tags}]
+    links: [{title, url, tags, extended}]
         Information about link
     """
     pb = pinboard.Pinboard(api_token)
@@ -19,6 +19,7 @@ def save_to_pinboard(api_token, links):
         pb.posts.add(url=link.get('url'),
                      description=link.get('title'),
                      tags=link.get('tags'),
-                     extended="via plh.io/pinboard",
+                     extended="{} via https://plh.io/pinboard".format(
+                         link.get('extended')),
                      shared=False,
                      toread=False)
