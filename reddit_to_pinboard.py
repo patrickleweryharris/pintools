@@ -5,8 +5,8 @@ Convert all saved Reddit links to Pinboard bookmarks
 
 import os
 import argparse
-import pinboard
 import praw
+import utils
 
 
 def create_parser():
@@ -70,31 +70,12 @@ def get_saved_links(username, password, secret, client_id):
         it = {
             'title': title,
             'url': "https://reddit.com{}".format(item.permalink),
-            'sub': item.subreddit.display_name}
+            'tags': ["reddit", item.subreddit.display_name],
+            'extended': ""}
         ret.append(it)
 
     print("Found {} links to save to Pinboard".format(len(ret)))
     return ret
-
-
-def save_to_pinboard(api_token, links):
-    """
-    Save new links to pinboard
-
-    Parameters:
-    api_token: str
-        Pinboard API token
-    links: [{title, url, sub}]
-    """
-    pb = pinboard.Pinboard(api_token)
-    for link in links:
-        print("Saving: {}".format(link.get('title')))
-        pb.posts.add(
-            url=link.get('url'),
-            description=link.get('title'),
-            tags=["reddit", link.get('sub')],
-            extended="via reddit_to_pinboard",
-            shared=False, toread=False)
 
 
 def main():
@@ -105,7 +86,7 @@ def main():
         args.password,
         args.secret,
         args.client_id)
-    save_to_pinboard(args.token, links)
+    utils.save_to_pinboard(args.token, links)
 
 
 if __name__ == "__main__":
