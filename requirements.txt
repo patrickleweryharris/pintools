@@ -1,0 +1,4 @@
+pintools
+pinboard==2.1.8
+praw==6.0.0
+PyGithub==1.43.8
