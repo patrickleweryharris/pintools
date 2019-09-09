@@ -1,5 +1,11 @@
-# pinboard
-Scripts for importing links from various services to Pinboard (https://pinboard.in)
+# Pintools
+Command line tools for working with [Pinboard](https://pinboard.in).
+
+Features:
+- Import starred repositories from Github
+- Copy saved reddit links
+- (planned) Organize tags based on originating site
+- (possible) Title fixer
 
 ## Table of Contents
 * [Install](#install)
@@ -8,7 +14,19 @@ Scripts for importing links from various services to Pinboard (https://pinboard.
 
 ## Install
 
-todo
+```
+pip install pintools
+```
+
+### Dev install
+
+Requires [pre-commit](https://pre-commit.com/)
+
+```
+$ git clone https://github.com/patrickleweryharris/pintools.git
+$ cd pintools
+$ pre-commit install
+```
 
 ### Dependencies
 
