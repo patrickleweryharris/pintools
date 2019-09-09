@@ -3,38 +3,8 @@
 Convert all saved Reddit links to Pinboard bookmarks
 """
 
-import os
-import argparse
 import praw
-import utils
-
-
-def create_parser():
-    """ Create argparse object for this CLI """
-    parser = argparse.ArgumentParser(
-        description=("Convert all saved Reddit links to Pinboard bookmarks"))
-
-    parser.add_argument("username", metavar="USERNAME",
-                        help="Reddit username")
-
-    parser.add_argument("password", metavar="PASSWORD",
-                        help="Reddit password")
-
-    parser.add_argument("--secret", "-s", metavar="SECRET",
-                        default=os.getenv('REDDIT_CLIENT_SECRET'),
-                        help=("Reddit API secret. "
-                              "Default: $REDDIT_CLIENT_SECRET"))
-
-    parser.add_argument("--client_id", "-c", metavar="CLIENT_ID",
-                        default=os.getenv("REDDIT_CLIENT_ID"),
-                        help=("Reddit API Client ID. "
-                              "Default: $REDDIT_CLIENT_ID"))
-
-    parser.add_argument("--token", "-t", metavar="USER:KEY",
-                        default=os.getenv("PINBOARD_API_TOKEN"),
-                        help=("Pinboard API token. "
-                              "Default: $PINBOARD_API_TOKEN"))
-    return parser
+import pintools.utils as utils
 
 
 def get_saved_links(username, password, secret, client_id):
@@ -78,16 +48,13 @@ def get_saved_links(username, password, secret, client_id):
     return ret
 
 
-def main():
-    parser = create_parser()
-    args = parser.parse_args()
+def save_reddit_links(pinboard, username, pw, secret, client_id):
+    """
+    TODO
+    """
     links = get_saved_links(
-        args.username,
-        args.password,
-        args.secret,
-        args.client_id)
-    utils.save_to_pinboard(args.token, links)
-
-
-if __name__ == "__main__":
-    main()
+        username,
+        pw,
+        secret,
+        client_id)
+    utils.save_to_pinboard(pinboard, links)

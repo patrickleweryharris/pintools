@@ -1,7 +1,4 @@
-import pinboard
-
-
-def save_to_pinboard(api_token, links):
+def save_to_pinboard(pb, links):
     """
     Save new links to pinboard
 
@@ -11,7 +8,6 @@ def save_to_pinboard(api_token, links):
     links: [{title, url, tags, extended}]
         Information about link
     """
-    pb = pinboard.Pinboard(api_token)
 
     for link in links:
         print("Saving: {}".format(link.get('title')))

@@ -4,7 +4,11 @@ TODO
 
 import os
 import argparse
-# import utils
+
+import pinboard
+
+from pintools.pinhub import save_git_stars
+from pintools.reddit_to_pinboard import save_reddit_links
 
 
 def create_parser():
@@ -58,7 +62,28 @@ def create_parser():
     return parser
 
 
+def run_options(args):
+    """
+    TODO
+    """
+    pb = pinboard.Pinboard(args.pinboard_token)
+
+    if args.func == "github":
+        print("Saving Github stars to Pinboard...")
+        save_git_stars(pb, args.token)
+    elif args.func == "reddit":
+        print("Saving Reddit saved links to Pinboard...")
+        save_reddit_links(pinboard, args.username, args.password, args.secret,
+                          args.client_id)
+    else:
+        print("No argument specified, use -h for help")
+
+
 def main():
     parser = create_parser()
     args = parser.parse_args()
-    print(args)
+    run_options(args)
+
+
+if __name__ == "__main__":
+    main()

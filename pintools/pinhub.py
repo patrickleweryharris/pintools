@@ -3,29 +3,10 @@
 Export Github stars to Pinboard bookmarks
 """
 
-import os
-import argparse
 import github
-import utils
+import pintools.utils as utils
 
 GITHUB = "https://github.com"
-
-
-def create_parser():
-    """ Create argparse object for this CLI """
-    parser = argparse.ArgumentParser(
-        description=("Copy Github Stars to Pinboard"))
-
-    parser.add_argument("--pinboard_token", "-p", metavar="USER:KEY",
-                        default=os.getenv("PINBOARD_API_TOKEN"),
-                        help=("Pinboard API token. "
-                              "Default: $PINBOARD_API_TOKEN"))
-
-    parser.add_argument("--github_token", "-g", metavar="TOKEN",
-                        default=os.getenv("PYGITHUB_ACCESS_TOKEN"),
-                        help=("Github Access Token. "
-                              "Default: $PYGITHUB_ACCESS_TOKEN"))
-    return parser
 
 
 def get_github_stars(token):
@@ -45,17 +26,14 @@ def get_github_stars(token):
     return names
 
 
-def main():
-    parser = create_parser()
-    args = parser.parse_args()
-    stars = get_github_stars(args.github_token)
+def save_git_stars(pinboard, github_token):
+    """
+    TODO
+    """
+    stars = get_github_stars(github_token)
     stars = [{'title': star[0],
               'url': "{}/{}".format(GITHUB,
                                     star[0]),
               'extended': star[1],
               'tags': ["github", "git_stars"]} for star in stars]
-    utils.save_to_pinboard(args.pinboard_token, stars)
-
-
-if __name__ == "__main__":
-    main()
+    utils.save_to_pinboard(pinboard, stars)
