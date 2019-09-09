@@ -12,7 +12,9 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/patrickleweryharris/pintools",
-    packages=setuptools.find_packages(),
+    packages=["pintools"],
+    entry_points={"console_scripts": ['pintools = pintools.pintools:main']},
+    install_requires=["pinboard", "praw", "PyGithub"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
