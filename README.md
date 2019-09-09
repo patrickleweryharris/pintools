@@ -62,9 +62,9 @@ todo
 
 ## TODO
 
-[x] Add functionality to save Reddit saved links to Pinboard
-[x] Add functionality to save Github stars to Pinboard
-[ ] Port pin-tags script to pintools
-[ ] Pypi upload
-[ ] Automate Pypi uploads on releases with Github actions
-[ ] Readme
+- [x] Add functionality to save Reddit saved links to Pinboard
+- [x] Add functionality to save Github stars to Pinboard
+- [ ] Port pin-tags script to pintools
+- [ ] Pypi upload
+- [ ] Automate Pypi uploads on releases with Github actions
+- [ ] Readme
