@@ -1,11 +1,15 @@
+import re
 import setuptools
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+version = re.search('^__version__ *= *"(.*)"',
+                    open('pintools/pintools.py').read(), re.M).group(1)
+
 setuptools.setup(
     name="pintools",
-    version="0.0.1",
+    version=version,
     author="Patrick Harris",
     author_email="patrick@plh.io",
     description="Tools importing links from various services to Pinboard",

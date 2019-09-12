@@ -65,24 +65,41 @@ Pintools will look for this Personal Access Token in `$PYGITHUB_ACCESS_TOKEN`.
 Alternatively, this token can be specified using the `--token` arguement
 
 ### Sync Reddit Saved Links
+Pintools can be used to copy Reddit saved items to your Pinboard account. Note
+that new saved items can be saved via [IFTTT](ifttt.com), but if you want to
+back up the entirety of your saved links, you need to use a script like this
+because IFTTT will only work on new saved items.
 
+Saved comments are not currently copied.
+
+Usage:
 ```
 pintools reddit [-h] [--secret SECRET] [--client_id CLIENT_ID] USERNAME PASSWORD
 ```
 
 #### Reddit Authentication
 
-todo
+Pintools uses [PRAW](https://praw.readthedocs.io/en/latest/) to connect with
+Reddit. You will need to crate a developer application (personal use script) on
+Reddit in order to authenticate. Please follow the PRAW insructions on 'Password
+Flow'
+[here](https://praw.readthedocs.io/en/latest/getting_started/authentication.html#password-flow).
+
+Once you have created a personal use script application on Reddit, save the
+Client-ID and Client-Secret. By default, pintools will look for these in
+`$REDDIT_CLIENT_ID` and `$REDDIT_CLIENT_SECRET`. Alternatively, these can be
+specified using the `--client_id` and `--secret` arguments. Username and
+password for Reddit must also be provided on the command line.
 
 ### Organize Pinboard links by originating site
 
-todo
+Not yet implemented
 
 ## TODO
 
 - [x] Add functionality to save Reddit saved links to Pinboard
 - [x] Add functionality to save Github stars to Pinboard
 - [ ] Port pin-tags script to pintools
-- [ ] Pypi upload
+- [x] Pypi upload
 - [ ] Automate Pypi uploads on releases with Github actions
-- [ ] Readme
+- [ ] Finish Readme

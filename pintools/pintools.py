@@ -10,16 +10,27 @@ import pinboard
 from pintools.pinhub import save_git_stars
 from pintools.reddit_to_pinboard import save_reddit_links
 
+__version__ = "0.0.2"
+
+desc = """ Command line tools for working with Pinboard.
+           Allows copying of Github Stars and Reddit Saved posts
+           to Pinboard, as well as organizing tags based on originating
+           site """
+
 
 def create_parser():
     """ Create argparse object for this CLI """
     parser = argparse.ArgumentParser(
-        description=("TODO"))
+        description=desc)
 
     parser.add_argument("--pinboard_token", "-p", metavar="USER:KEY",
                         default=os.getenv("PINBOARD_API_TOKEN"),
                         help=("Pinboard API token. "
                               "Default: $PINBOARD_API_TOKEN"))
+
+    parser.add_argument("--version", "-v", action="store_true",
+                        default=False,
+                        help="Return version information")
 
     subparser = parser.add_subparsers(dest="func")
 
@@ -64,17 +75,22 @@ def create_parser():
 
 def run_options(args):
     """
-    TODO
+    Run functions that the user has specified
     """
     pb = pinboard.Pinboard(args.pinboard_token)
 
-    if args.func == "github":
+    if args.version:
+        print(__version__)
+        return
+    if args.func in ["github", "g"]:
         print("Saving Github stars to Pinboard...")
         save_git_stars(pb, args.token)
-    elif args.func == "reddit":
+    elif args.func in ["reddit", "r"]:
         print("Saving Reddit saved links to Pinboard...")
         save_reddit_links(pinboard, args.username, args.password, args.secret,
                           args.client_id)
+    elif args.func in ["tags", "t"]:
+        print("Not yet implemented")
     else:
         print("No argument specified, use -h for help")
 
