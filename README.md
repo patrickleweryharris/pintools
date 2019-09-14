@@ -25,7 +25,7 @@ Requires [pre-commit](https://pre-commit.com/)
 ```
 $ git clone https://github.com/patrickleweryharris/pintools.git
 $ cd pintools
-$ pre-commit install
+$ make install
 ```
 
 ### Dependencies
