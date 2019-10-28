@@ -9,8 +9,9 @@ import pinboard
 
 from pintools.pinhub import save_git_stars
 from pintools.reddit_to_pinboard import save_reddit_links
+from pintools.title_fix import fix_titles
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 desc = """ Command line tools for working with Pinboard.
            Allows copying of Github Stars and Reddit Saved posts
@@ -70,6 +71,18 @@ def create_parser():
                              default=False,
                              help="Config file for tag organization")
 
+    titles_parser = subparser.add_parser("titles",
+                                         description=("Correct bookmark titles"
+                                                      "for a specific tag. The"
+                                                      "title of the URL is"
+                                                      "assumed to be the"
+                                                      "correct"
+                                                      "title"))
+
+    titles_parser.add_argument("--tag", "-t", metavar="TAG",
+                               default=False,
+                               help="Tag to fix all titles for")
+
     return parser
 
 
@@ -91,6 +104,11 @@ def run_options(args):
                           args.client_id)
     elif args.func in ["tags", "t"]:
         print("Not yet implemented")
+    elif args.func in ["titles"]:
+        if not args.tag:
+            print("Please specify a tag to fix titles for")
+            return
+        fix_titles(pb, args.tag)
     else:
         print("No argument specified, use -h for help")
 

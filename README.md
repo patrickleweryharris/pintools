@@ -5,7 +5,7 @@ Features:
 - Import starred repositories from Github
 - Copy saved reddit links
 - (planned) Organize tags based on originating site
-- (possible) Title fixer
+- Title fixer
 
 ## Table of Contents
 * [Install](#install)
@@ -94,6 +94,18 @@ password for Reddit must also be provided on the command line.
 ### Organize Pinboard links by originating site
 
 Not yet implemented
+
+### Fix Titles
+Pintools can fix bookmark titles for you, which sometimes get messed up when
+saving bookmarks automatically with IFTTT.
+
+Usage:
+```
+pintools titles [-h] [--tag TAG]
+```
+In order to prevent accidentally nuking all your bookmark titles, this feature
+operates on a single tag. For each bookmark with the tag specified, pintools
+will grab the title of the URL, and update the bookmark's title in Pinboard.
 
 ## TODO
 
