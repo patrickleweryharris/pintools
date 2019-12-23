@@ -93,7 +93,28 @@ password for Reddit must also be provided on the command line.
 
 ### Organize Pinboard links by originating site
 
-Not yet implemented
+Pintools can be used to tag each bookmark against the originating site,
+for easier organization. For example, any bookmark from `github.com` will
+be tagged with `github`.
+
+Usage:
+```
+pintools tags [-h] [--config CONFIG_FILE]
+```
+This can be optionally customized using a config file. The config file can group several
+domains under one URL.
+
+The config file uses YAML syntax like so:
+```
+domains: # list title must always be 'domains'
+  utoronto: # Each key is the final tag you want on your bookmarks
+    - utoronto # each item in the list is the base URL you want the tag associated with
+    - cs.toronto # don't include .com or www.
+  twitter:
+    - t
+    - twitter
+```
+There is an example config file [here](domain_assoc.yml)
 
 ### Fix Titles
 Pintools can fix bookmark titles for you, which sometimes get messed up when
@@ -111,7 +132,7 @@ will grab the title of the URL, and update the bookmark's title in Pinboard.
 
 - [x] Add functionality to save Reddit saved links to Pinboard
 - [x] Add functionality to save Github stars to Pinboard
-- [ ] Port pin-tags script to pintools
+- [x] Port pin-tags script to pintools
 - [x] Pypi upload
 - [ ] Automate Pypi uploads on releases with Github actions
 - [ ] Finish Readme

@@ -1,0 +1,14 @@
+domains:
+  utoronto:
+    - utoronto
+    - cs.toronto
+  cloudflare:
+    - 1.1.1.1
+    - 1.1.1
+    - cloudflare
+  twitter:
+    - t
+    - twitter
+  github:
+    - help.github
+    - github

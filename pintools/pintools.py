@@ -10,8 +10,9 @@ import pinboard
 from pintools.pinhub import save_git_stars
 from pintools.reddit_to_pinboard import save_reddit_links
 from pintools.title_fix import fix_titles
+from pintools.pin_tags import pin_tags
 
-__version__ = "0.0.3"
+__version__ = "1.0.0"
 
 desc = """ Command line tools for working with Pinboard.
            Allows copying of Github Stars and Reddit Saved posts
@@ -35,7 +36,7 @@ def create_parser():
 
     subparser = parser.add_subparsers(dest="func")
 
-    git_parser = subparser.add_parser("github", aliases=["g"],
+    git_parser = subparser.add_parser("github",
                                       description="Copy Github Stars "
                                       "to Pinboard")
 
@@ -44,7 +45,7 @@ def create_parser():
                             help=("Github Access Token. "
                                   "Default: $PYGITHUB_ACCESS_TOKEN"))
 
-    reddit_parser = subparser.add_parser("reddit", aliases=["r"],
+    reddit_parser = subparser.add_parser("reddit",
                                          description="Copy saved Reddit "
                                          "items to Pinboard")
 
@@ -64,20 +65,25 @@ def create_parser():
                                help=("Reddit API Client ID. "
                                      "Default: $REDDIT_CLIENT_ID"))
 
-    tags_parser = subparser.add_parser("tags", aliases=["t"],
-                                       description="Organize tags in Pinboard")
+    tags_parser = subparser.add_parser("tags",
+                                       description="Tag every bookmark with"
+                                       " it's originating website."
+                                       " to map more than one site to the same"
+                                       " tag, add a config file with -c"
+                                       " see: github.com/patricklewery"
+                                       "harris/pintools")
 
     tags_parser.add_argument('--config', "-c", metavar="CONFIG_FILE",
-                             default=False,
-                             help="Config file for tag organization")
+                             default=None,
+                             help="Config file for tag organization.")
 
     titles_parser = subparser.add_parser("titles",
                                          description=("Correct bookmark titles"
-                                                      "for a specific tag. The"
-                                                      "title of the URL is"
-                                                      "assumed to be the"
-                                                      "correct"
-                                                      "title"))
+                                                      " for a specific tag."
+                                                      " The title of the URL"
+                                                      " is assumed to be the"
+                                                      " correct"
+                                                      " title"))
 
     titles_parser.add_argument("--tag", "-t", metavar="TAG",
                                default=False,
@@ -95,15 +101,15 @@ def run_options(args):
     if args.version:
         print(__version__)
         return
-    if args.func in ["github", "g"]:
+    if args.func in ["github"]:
         print("Saving Github stars to Pinboard...")
         save_git_stars(pb, args.token)
-    elif args.func in ["reddit", "r"]:
+    elif args.func in ["reddit"]:
         print("Saving Reddit saved links to Pinboard...")
-        save_reddit_links(pinboard, args.username, args.password, args.secret,
+        save_reddit_links(pb, args.username, args.password, args.secret,
                           args.client_id)
-    elif args.func in ["tags", "t"]:
-        print("Not yet implemented")
+    elif args.func in ["tags"]:
+        pin_tags(pb, args.config)
     elif args.func in ["titles"]:
         if not args.tag:
             print("Please specify a tag to fix titles for")
