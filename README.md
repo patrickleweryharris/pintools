@@ -4,7 +4,7 @@ Command line tools for working with [Pinboard](https://pinboard.in).
 Features:
 - Import starred repositories from Github
 - Copy saved reddit links
-- (planned) Organize tags based on originating site
+- Organize tags based on originating site
 - Title fixer
 
 ## Table of Contents
