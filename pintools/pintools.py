@@ -12,7 +12,7 @@ from pintools.reddit_to_pinboard import save_reddit_links
 from pintools.title_fix import fix_titles
 from pintools.pin_tags import pin_tags
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 desc = """ Command line tools for working with Pinboard.
            Allows copying of Github Stars and Reddit Saved posts

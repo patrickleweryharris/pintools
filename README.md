@@ -1,3 +1,6 @@
+![](https://github.com/patrickleweryharris/pintools/workflows/Python%20package/badge.svg)
+![](https://img.shields.io/pypi/v/pintools)
+
 # Pintools
 Command line tools for working with [Pinboard](https://pinboard.in).
 
@@ -6,11 +9,6 @@ Features:
 - Copy saved reddit links
 - Organize tags based on originating site
 - Title fixer
-
-## Table of Contents
-* [Install](#install)
-* [Usage](#usage)
-* [todo](#todo)
 
 ## Install
 
