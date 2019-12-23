@@ -127,12 +127,3 @@ pintools titles [-h] [--tag TAG]
 In order to prevent accidentally nuking all your bookmark titles, this feature
 operates on a single tag. For each bookmark with the tag specified, pintools
 will grab the title of the URL, and update the bookmark's title in Pinboard.
-
-## TODO
-
-- [x] Add functionality to save Reddit saved links to Pinboard
-- [x] Add functionality to save Github stars to Pinboard
-- [x] Port pin-tags script to pintools
-- [x] Pypi upload
-- [ ] Automate Pypi uploads on releases with Github actions
-- [ ] Finish Readme
