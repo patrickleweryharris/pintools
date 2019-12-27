@@ -12,3 +12,8 @@ domains:
   github:
     - help.github
     - github
+  python:
+    - python
+    - docs.python
+    - packaging.python
+    - pypi
