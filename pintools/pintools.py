@@ -12,7 +12,7 @@ from pintools.reddit_to_pinboard import save_reddit_links
 from pintools.title_fix import fix_titles
 from pintools.pin_tags import pin_tags
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 desc = """ Command line tools for working with Pinboard.
            Allows copying of Github Stars and Reddit Saved posts
@@ -27,7 +27,8 @@ def create_parser():
 
     parser.add_argument("--pinboard_token", "-p", metavar="USER:KEY",
                         default=os.getenv("PINBOARD_API_TOKEN"),
-                        help=("Pinboard API token. "
+                        help=("Pinboard API token. Should provide this before"
+                              "any other arguments. "
                               "Default: $PINBOARD_API_TOKEN"))
 
     parser.add_argument("--version", "-v", action="store_true",

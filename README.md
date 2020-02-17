@@ -64,7 +64,7 @@ Alternatively, this token can be specified using the `--token` arguement
 
 ### Sync Reddit Saved Links
 Pintools can be used to copy Reddit saved items to your Pinboard account. Note
-that new saved items can be saved via [IFTTT](ifttt.com), but if you want to
+that new saved items can be saved via [IFTTT](https://ifttt.com), but if you want to
 back up the entirety of your saved links, you need to use a script like this
 because IFTTT will only work on new saved items.
 
