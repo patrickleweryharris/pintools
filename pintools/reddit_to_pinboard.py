@@ -22,7 +22,6 @@ def get_saved_links(username, password, secret, client_id):
         Reddit API Client ID
     """
     user_agent = "/u/{} get all saved entries".format(username)
-    print(user_agent)
     r = praw.Reddit(client_id=client_id, client_secret=secret,
                     password=password, username=username,
                     user_agent=user_agent)
