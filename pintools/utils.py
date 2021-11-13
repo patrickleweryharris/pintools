@@ -15,7 +15,7 @@ def save_to_pinboard(pb, links):
         pb.posts.add(url=link.get('url'),
                      description=link.get('title'),
                      tags=link.get('tags'),
-                     extended="{} via https://plh.io/pinboard".format(
+                     extended="{} via Pintools (https://lewery.ca/pinboard)".format(
                          link.get('extended')),
                      shared=False,
                      toread=False)

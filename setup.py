@@ -11,7 +11,6 @@ setuptools.setup(
     name="pintools",
     version=version,
     author="Patrick Harris",
-    author_email="patrick@plh.io",
     description="Tools importing links from various services to Pinboard",
     long_description=long_description,
     long_description_content_type="text/markdown",
